@@ -6,9 +6,9 @@ cd "$(dirname "$0")"
 OBJDIFF="${OBJDIFF:-objdiff-cli}"
 mkdir -p build
 
-echo "== 1. Assemble caller.s twice"
-arm-none-eabi-as -mcpu=arm7tdmi -o build/local.o caller.s
-arm-none-eabi-as -mcpu=arm7tdmi --defsym GLOBAL=1 -o build/global.o caller.s
+echo "== 1. Assemble local.s and global.s"
+arm-none-eabi-as -mcpu=arm7tdmi -o build/local.o local.s
+arm-none-eabi-as -mcpu=arm7tdmi -o build/global.o global.s
 
 echo
 echo "== 2. The call before linking"

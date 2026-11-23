@@ -19,7 +19,8 @@ You need GNU binutils for ARM (`arm-none-eabi-as`, `-ld`, `-objcopy`, `-objdump`
 
 ## What it shows
 
-[`caller.s`](caller.s) is assembled twice. The only difference between the two builds is one `.global callee` line:
+[`local.s`](local.s) and [`global.s`](global.s) are the same code: `caller` calls `callee`, which comes right after
+it. The only difference is the `.global callee` line in `global.s`:
 
 | Object | `callee` is | The `bl callee` in `caller` |
 |---|---|---|
