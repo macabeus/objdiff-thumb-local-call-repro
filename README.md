@@ -55,11 +55,11 @@ There are two separate causes, one for each direction.
 
 The branch
 [`fix-thumb-local-call-reloc-relax`](https://github.com/macabeus/objdiff/tree/fix-thumb-local-call-reloc-relax) in
-`macabeus/objdiff` makes three changes:
+`macabeus/objdiff` makes two changes, one for each cause:
 
 - It adds the PC offset when resolving ARM and Thumb branch relocations.
-- It matches a resolved call against a relocated one in either direction.
-- It matches them only when both go into the same function at the same offset. Before, a resolved call matched any
-  relocation, even one to another function.
+- It lets a relocation in the target match a value in the base with `functionRelocDiffs=none`, as a value in the
+  target already matched a relocation in the base.
 
-With that build, both directions score 100%.
+With that build, both directions score 100%. With the default `functionRelocDiffs=name_address`, both still score
+98.75%: that mode compares what relocations point at, and one side has no relocation.
